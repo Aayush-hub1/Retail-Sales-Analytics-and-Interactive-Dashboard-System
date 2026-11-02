@@ -1,0 +1,340 @@
+/* Retail Sales Analytics System - styles */
+
+:root {
+  --bg: #f4f6fa;
+  --card: #ffffff;
+  --text: #1f2933;
+  --muted: #6b7785;
+  --primary: #2f6fed;
+  --primary-dark: #1f56c4;
+  --border: #dde3ec;
+  --danger-bg: #fdecec;
+  --danger-text: #b42318;
+  --success-bg: #e8f7ee;
+  --success-text: #1a7f43;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0 0 40px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+header {
+  background: var(--primary);
+  color: #ffffff;
+  padding: 18px 24px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+header p {
+  margin: 4px 0 0;
+  opacity: 0.85;
+  font-size: 0.9rem;
+}
+
+main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+h1 {
+  margin: 0 0 16px;
+  font-size: 1.6rem;
+}
+
+h2 {
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+}
+
+section {
+  margin-bottom: 24px;
+}
+
+/* Generic card */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  min-width: 0;
+}
+
+/* KPI cards: <div class="card"><span>Label</span><strong>Value</strong></div> */
+.kpis {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.kpis .card span {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.kpis .card strong {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* Charts */
+.charts {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.charts canvas {
+  max-width: 100%;
+}
+
+/* Filters */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
+  margin-bottom: 12px;
+}
+
+/* Category checkboxes */
+.cat-filter {
+  margin-bottom: 12px;
+}
+
+.cat-title {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.cat-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cat-list label {
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.cat-list label:hover {
+  background: #eef3ff;
+}
+
+.cat-list input {
+  min-width: 0;
+  width: auto;
+  margin: 0;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+input,
+select {
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: #ffffff;
+  color: var(--text);
+  min-width: 140px;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+/* Buttons */
+button {
+  padding: 9px 16px;
+  border: 1px solid var(--primary);
+  border-radius: 6px;
+  background: var(--primary);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button:hover {
+  background: var(--primary-dark);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button.secondary {
+  background: #ffffff;
+  color: var(--primary);
+}
+
+button.secondary:hover {
+  background: #eef3ff;
+}
+
+/* Status line under filters / form */
+.status {
+  margin: 8px 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+/* Table */
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--card);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+th,
+td {
+  padding: 8px 10px;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background: #eef2f8;
+  font-weight: 600;
+}
+
+tbody tr:hover {
+  background: #f7f9fc;
+}
+
+/* Right-align Qty, Price, Disc., Revenue (columns 6 to 9) */
+td:nth-child(6),
+td:nth-child(7),
+td:nth-child(8),
+td:nth-child(9),
+th:nth-child(6),
+th:nth-child(7),
+th:nth-child(8),
+th:nth-child(9) {
+  text-align: right;
+}
+
+/* New sale form */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.form-grid input,
+.form-grid select {
+  width: 100%;
+}
+
+#pricePreview {
+  font-weight: 600;
+  color: var(--text);
+}
+
+#formMessage {
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* Messages */
+.error {
+  background: var(--danger-bg);
+  color: var(--danger-text);
+  border: 1px solid #f3b8b3;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin-bottom: 16px;
+}
+
+.success {
+  background: var(--success-bg);
+  color: var(--success-text);
+  border: 1px solid #b6e3c8;
+  border-radius: 6px;
+  padding: 10px 14px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .kpis {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .charts {
+    grid-template-columns: 1fr;
+  }
+  .form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .kpis,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+  .filters label,
+  .filters input,
+  .filters select {
+    width: 100%;
+  }
+}

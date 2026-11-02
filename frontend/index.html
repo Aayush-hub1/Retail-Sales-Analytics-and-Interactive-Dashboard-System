@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Retail Sales Analytics</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Retail Sales Analytics</h1>
+  </header>
+
+  <main>
+    <div id="errorBanner" class="error hidden"></div>
+
+    <!-- KPI cards -->
+    <section class="kpis">
+      <div class="card"><span>Total Revenue</span><strong id="kpiRevenue">...</strong></div>
+      <div class="card"><span>Orders</span><strong id="kpiOrders">...</strong></div>
+      <div class="card"><span>Units Sold</span><strong id="kpiUnits">...</strong></div>
+      <div class="card"><span>Avg Order Value</span><strong id="kpiAov">...</strong></div>
+    </section>
+
+    <!-- Charts -->
+    <section class="charts">
+      <div class="card">
+        <h2>Monthly Revenue</h2>
+        <canvas id="monthlyChart"></canvas>
+      </div>
+      <div class="card">
+        <h2>Sales by Category</h2>
+        <canvas id="categoryChart"></canvas>
+      </div>
+    </section>
+
+    <!-- Filters + table -->
+    <section class="card">
+      <h2>Sales</h2>
+      <div class="filters">
+        <input id="fSearch" type="text" placeholder="Search customer or product">
+        <input id="fFrom" type="date" title="From date">
+        <input id="fTo" type="date" title="To date">
+        <button id="btnApply">Apply</button>
+        <button id="btnReset" class="secondary">Reset</button>
+        <button id="btnExcel" class="secondary">Download Excel</button>
+      </div>
+      <div class="cat-filter">
+        <span class="cat-title">Categories (tick one or more; none = all):</span>
+        <div id="fCategories" class="cat-list"></div>
+      </div>
+      <div id="salesStatus" class="status">Loading...</div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>Date</th><th>Customer</th><th>Product</th>
+              <th>Category</th><th>Qty</th><th>Price</th><th>Disc.</th>
+              <th>Revenue</th><th>Payment</th>
+            </tr>
+          </thead>
+          <tbody id="salesBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Create sale -->
+    <section class="card">
+      <h2>New Sale</h2>
+      <div class="form-grid">
+        <label>Customer
+          <select id="nCustomer"></select>
+        </label>
+        <label>Product
+          <select id="nProduct"></select>
+        </label>
+        <label>Quantity
+          <input id="nQty" type="number" min="1" value="1">
+        </label>
+        <label>Discount (%)
+          <input id="nDiscount" type="number" min="0" max="100" value="0">
+        </label>
+        <label>Payment
+          <select id="nPayment">
+            <option>Cash</option><option>UPI</option>
+            <option>Credit Card</option><option>Debit Card</option>
+          </select>
+        </label>
+        <label>Date
+          <input id="nDate" type="date">
+        </label>
+      </div>
+      <p id="pricePreview" class="status"></p>
+      <button id="btnSave">Save Sale</button>
+      <p id="formMessage" class="status"></p>
+    </section>
+
+    <!-- Add customer -->
+    <section class="card">
+      <h2>Add Customer</h2>
+      <div class="form-grid">
+        <label>Full name
+          <input id="cName" type="text" maxlength="100">
+        </label>
+        <label>Email
+          <input id="cEmail" type="email" maxlength="120">
+        </label>
+        <label>City
+          <input id="cCity" type="text" maxlength="60">
+        </label>
+        <label>State
+          <input id="cState" type="text" maxlength="60">
+        </label>
+      </div>
+      <button id="btnAddCustomer">Add Customer</button>
+      <p id="customerMessage" class="status"></p>
+    </section>
+
+    <!-- Add product -->
+    <section class="card">
+      <h2>Add Product</h2>
+      <div class="form-grid">
+        <label>Product name
+          <input id="pName" type="text" maxlength="100">
+        </label>
+        <label>Category (pick or type a new one)
+          <input id="pCategory" type="text" maxlength="50" list="categoryOptions">
+          <datalist id="categoryOptions"></datalist>
+        </label>
+        <label>Unit price
+          <input id="pPrice" type="number" min="0.01" step="0.01">
+        </label>
+      </div>
+      <button id="btnAddProduct">Add Product</button>
+      <p id="productMessage" class="status"></p>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
